@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "list.h"
-#define CURRENT_DATA (list->current)->data 
+#define (list->current)->data CURRENT_DATA
 
 
 typedef struct Node Node;
