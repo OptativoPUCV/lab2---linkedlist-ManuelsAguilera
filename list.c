@@ -80,13 +80,15 @@ void * prevList(List * list) {
 void pushFront(List * list, void * data) {
 
   //Crea un nuevo nodo y lo intercambia por head.
-  Node* newNode = createNode(data);
+  /*
+    Node* newNode = createNode(data);
   newNode->next=list->head;
 
   (list->head)->prev=newNode;
   list->head=newNode;
 
   return;  
+  */
 }
 
 void pushBack(List * list, void * data) {
