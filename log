@@ -202,3 +202,13 @@ Thu 23 Mar 2023 03:57:35 PM UTC:
  tests:  10|2
 total_score: 45/70
 8829ece
+Thu 23 Mar 2023 03:58:28 PM UTC: 
+ list.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+list.c: In function ‘pushCurrent’:
+list.c:119:6: error: expected expression before ‘/’ token
+  119 |     */
+      |      ^
+Compilation failed
+c9c89d3
