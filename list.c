@@ -105,7 +105,7 @@ void pushBack(List * list, void * data) {
 
 void pushCurrent(List * list, void * data) {
   //Poner nuevo nodo frente a current.
-  Node* newNode;
+  Node* newNode =  createNode(data);
   Node* prev = list->current;
   Node* next = list->current->next;
 

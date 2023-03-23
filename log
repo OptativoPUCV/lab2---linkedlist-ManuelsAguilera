@@ -235,3 +235,9 @@ list.c:119:16: error: ‘newNode’ is used uninitialized [-Werror=uninitialized
 cc1: all warnings being treated as errors
 Compilation failed
 7ecdd38
+Thu 23 Mar 2023 04:24:53 PM UTC: 
+ list.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  10|2
+total_score: 45/70
+8151427
