@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "list.h"
-#define CURRENT_DATA NULL
+#define CURRENT_DATA (list->current)->data
 
 
 typedef struct Node Node;
@@ -48,7 +48,7 @@ void * firstList(List * list) {
   
     list->current = list->head;
     
-    return (list->current)->data;
+    return CURRENT_DATA;
 }
 
 void * nextList(List * list) {
