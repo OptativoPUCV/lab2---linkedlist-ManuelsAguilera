@@ -224,3 +224,14 @@ Thu 23 Mar 2023 04:08:48 PM UTC:
  tests:  10|2
 total_score: 45/70
 6d6ea7b
+Thu 23 Mar 2023 04:24:18 PM UTC: 
+ list.c | 29 +++++++++--------------------
+ 1 file changed, 9 insertions(+), 20 deletions(-)
+In file included from test.c:5:
+test.c: In function ‘pushCurrent’:
+list.c:119:16: error: ‘newNode’ is used uninitialized [-Werror=uninitialized]
+  119 |   newNode->prev=prev;
+      |   ~~~~~~~~~~~~~^~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+7ecdd38
