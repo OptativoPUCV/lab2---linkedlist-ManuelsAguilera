@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "list.h"
 #define CURRENT_DATA (list->current)->data
-
+#define IFCURRENTNULL if (list->current == NULL) return NULL;
 
 typedef struct Node Node;
 
@@ -52,7 +52,7 @@ void * firstList(List * list) {
 }
 
 void * nextList(List * list) {
-    if (list->current == NULL) return NULL;
+    IFCURRENTNULL
     if ((list->current)->next == NULL) return NULL;
   
     list->current = (list->current)->next;
@@ -61,11 +61,15 @@ void * nextList(List * list) {
 }
 
 void * lastList(List * list) {
+    IFCURRENTNULL
+  
     list->current = list->tail;
     return CURRENT_DATA;
 }
 
 void * prevList(List * list) {
+    IFCURRENTNULL
+  
     list->current = (list->current)->prev; 
     return CURRENT_DATA;
 }
