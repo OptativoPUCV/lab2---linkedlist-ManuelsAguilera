@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "list.h"
+#define CURRENT_DATA (list->current)->data 
+
 
 typedef struct Node Node;
 
@@ -43,24 +45,24 @@ List * createList() {
 void * firstList(List * list) {
     list->current = list->head;
   
-    return list->head;
+    return CURRENT_DATA;
 }
 
 void * nextList(List * list) {
 
     list->current = (list->current)->next;
     
-    return list->current;
+    return CURRENT_DATA;
 }
 
 void * lastList(List * list) {
     list->current = list->tail;
-    return list->current;
+    return CURRENT_DATA;
 }
 
 void * prevList(List * list) {
     list->current = (list->current)->prev; 
-    return list->current;
+    return CURRENT_DATA;
 }
 
 void pushFront(List * list, void * data) {
