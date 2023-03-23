@@ -84,7 +84,9 @@ void pushFront(List * list, void * data) {
   
   if (list->head == NULL) 
   {
+    //En caso de que no haya nodos en la lista.
     list->head=newNode;
+    list->tail=list->head;
   }
   
   newNode->next=list->head;
