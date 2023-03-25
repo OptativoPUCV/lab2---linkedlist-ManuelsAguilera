@@ -136,41 +136,27 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  
-  Node* selected =list->current;
-  
-  IFCURRENTNULL //macro: if (list->current == NULL) return NULL;
-  
-  if ( selected==NULL) return NULL;
-  /* Si el previo es NULL next es head, si el next es NULL prev es tail. Si
-  ambos son null entonces la lista quedara vacia. */
-  void* dato = (selected)->data;
-  
-    if (selected->prev == NULL && selected->next == NULL) 
-    {
-      list->head = NULL;
-      list->tail = NULL;
-      free(selected);
-    
-      return dato;
+  void * popBack(List * list) {
+    if (list == NULL || list->tail == NULL) {
+        return NULL; // la lista está vacía
     }
-  
-    (selected->prev)->next = selected->next;
-  if (selected->next != NULL) {
-    (selected->next)->prev = selected->prev;
-  }
-  
-  free(selected);
-  
-  if (selected->prev == NULL) {
-    list->head = selected->next;
-  }
-  
-  if (selected->next == NULL) {
-    list->tail = selected->prev;
-  }
-  return dato;
+    
+    Node * nodeToRemove = list->tail;
+    void * data = nodeToRemove->data;
+
+    if (list->head == list->tail) {
+        // si la lista solo tiene un nodo
+        list->head = NULL;
+        list->tail = NULL;
+    } else {
+        list->tail = nodeToRemove->prev;
+        list->tail->next = NULL;
+    }
+
+    free(nodeToRemove);
+    return data;
 }
+
 void cleanList(List * list) {
     while (list->head != NULL) {
         popFront(list);
