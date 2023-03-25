@@ -136,35 +136,37 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    if (list == NULL || list->current == NULL) {
-        // La lista está vacía o el nodo actual no está definido.
-        return NULL;
-    }
+    if (list == NULL ) return NULL;
+    IFCURRENTNULL
 
-    Node * current = list->current;
-    void * data = current->data;
+    
 
-    if (current == list->head) {
-        // El nodo actual es el primer nodo de la lista.
-        list->head = current->next;
-        if (list->head != NULL) {
+    Node * selected = list->current;
+    void * dato = selected->data;
+
+    if (selected == list->head) 
+    {
+        
+        list->head = selected->next;
+        if (list->head != NULL) 
+        {
             list->head->prev = NULL;
         }
-    } else if (current == list->tail) {
-        // El nodo actual es el último nodo de la lista.
-        list->tail = current->prev;
+    } else if (selected == list->tail) 
+    {
+        list->tail = selected->prev;
         if (list->tail != NULL) {
             list->tail->next = NULL;
         }
     } else {
         // El nodo actual está en el medio de la lista.
-        current->prev->next = current->next;
-        current->next->prev = current->prev;
+        selected->prev->next = selected->next;
+        selected->next->prev = selected->prev;
     }
 
-    list->current = current->next;
-    free(current);
-    return data;
+    list->current = selected->next;
+    free(selected);
+    return dato;
 }
 
 void cleanList(List * list) {
