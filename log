@@ -319,3 +319,15 @@ list.c:139:10: error: ‘popBack’ defined but not used [-Werror=unused-functio
 cc1: all warnings being treated as errors
 Compilation failed
 c6cffcd
+Sat 25 Mar 2023 12:29:34 AM UTC: 
+ list.c | 1 -
+ 1 file changed, 1 deletion(-)
+In file included from test.c:5:
+list.c:138:8: error: redefinition of ‘popBack’
+  138 | void * popBack(List * list) {
+      |        ^~~~~~~
+list.c:133:8: note: previous definition of ‘popBack’ with type ‘void *(List *)’ {aka ‘void *(struct List *)’}
+  133 | void * popBack(List * list) {
+      |        ^~~~~~~
+Compilation failed
+73c865b

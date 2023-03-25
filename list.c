@@ -135,8 +135,7 @@ void * popBack(List * list) {
     return popCurrent(list);
 }
 
-void * popCurrent(List * list) {
-  void * popBack(List * list) {
+void * popBack(List * list) {
     if (list == NULL || list->tail == NULL) {
         return NULL; // la lista está vacía
     }
