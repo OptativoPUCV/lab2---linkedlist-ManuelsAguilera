@@ -136,30 +136,37 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
+  
+  Node* selected =list->current;
+  
   IFCURRENTNULL
-
-  void* dato= (list->current)->data;
+  if ( selected==NULL) return NULL;
+  /* Si el previo es NULL next es head, si el next es NULL prev es tail. Si
+  ambos son null entonces la lista quedara vacia. */
+  void* dato = (selected)->data;
   
-  Node* prev = list->current->prev;
-  Node* next = list->current->next;
-
-  prev->next=next;
-  next->prev=prev;
-  
-  if (prev==NULL)
+  if (selected->prev == NULL && selected->next == NULL) 
   {
-    list->head=next;
-    next->prev=NULL;   
+    list->head = NULL;
+    list->tail = NULL;
+    free(selected);
+
+    return dato;
   }
 
-  if (next == NULL)
-  {
-    list->tail=prev;
+
+  (selected->prev)->next = selected->next;
+  (selected->prev)->prev = selected->prev;
+
+  free(selected);
+
+  if (selected->prev == NULL) list->head = selected->next;
+  if (selected->next == NULL) list->tail = selected->prev;
+
     
-  }
-  
-  
+
   return dato;
+  
 }
 
 void cleanList(List * list) {
