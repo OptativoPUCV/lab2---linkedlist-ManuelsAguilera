@@ -155,15 +155,7 @@ void * popCurrent(List * list) {
     return dato;
   }
 
-
-  if (selected->prev!=NULL){
-    (selected->prev)->next = selected->next;
-  }
-
-  if (selected->next!=NULL){
-    (selected->next)->prev = selected->prev;
-  }
-  
+if (selected->prev!=NULL){
 
   free(selected);
 
