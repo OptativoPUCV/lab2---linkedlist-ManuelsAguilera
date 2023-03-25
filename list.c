@@ -135,24 +135,35 @@ void * popBack(List * list) {
     return popCurrent(list);
 }
 
-void * popBack(List * list) {
-    if (list == NULL || list->tail == NULL) {
-        return NULL; // la lista está vacía
+void * popCurrent(List * list) {
+    if (list == NULL || list->current == NULL) {
+        // La lista está vacía o el nodo actual no está definido.
+        return NULL;
     }
-    
-    Node * nodeToRemove = list->tail;
-    void * data = nodeToRemove->data;
 
-    if (list->head == list->tail) {
-        // si la lista solo tiene un nodo
-        list->head = NULL;
-        list->tail = NULL;
+    Node * current = list->current;
+    void * data = current->data;
+
+    if (current == list->head) {
+        // El nodo actual es el primer nodo de la lista.
+        list->head = current->next;
+        if (list->head != NULL) {
+            list->head->prev = NULL;
+        }
+    } else if (current == list->tail) {
+        // El nodo actual es el último nodo de la lista.
+        list->tail = current->prev;
+        if (list->tail != NULL) {
+            list->tail->next = NULL;
+        }
     } else {
-        list->tail = nodeToRemove->prev;
-        list->tail->next = NULL;
+        // El nodo actual está en el medio de la lista.
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
     }
 
-    free(nodeToRemove);
+    list->current = current->next;
+    free(current);
     return data;
 }
 
