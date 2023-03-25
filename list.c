@@ -139,7 +139,8 @@ void * popCurrent(List * list) {
   
   Node* selected =list->current;
   
-  IFCURRENTNULL
+  IFCURRENTNULL //macro: if (list->current == NULL) return NULL;
+  
   if ( selected==NULL) return NULL;
   /* Si el previo es NULL next es head, si el next es NULL prev es tail. Si
   ambos son null entonces la lista quedara vacia. */
@@ -155,8 +156,14 @@ void * popCurrent(List * list) {
   }
 
 
-  (selected->prev)->next = selected->next;
-  (selected->next)->prev = selected->prev;
+  if (selected->prev!=NULL){
+    (selected->prev)->next = selected->next;
+  }
+
+  if (selected->next!=NULL){
+    (selected->next)->prev = selected->prev;
+  }
+  
 
   free(selected);
 
