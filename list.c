@@ -146,28 +146,31 @@ void * popCurrent(List * list) {
   ambos son null entonces la lista quedara vacia. */
   void* dato = (selected)->data;
   
-  if (selected->prev == NULL && selected->next == NULL) 
-  {
-    list->head = NULL;
-    list->tail = NULL;
-    free(selected);
-
-    return dato;
-  }
-
-if (selected->prev!=NULL){
-
-  free(selected);
-
-  if (selected->prev == NULL) list->head = selected->next;
-  if (selected->next == NULL) list->tail = selected->prev;
-
+    if (selected->prev == NULL && selected->next == NULL) 
+    {
+      list->head = NULL;
+      list->tail = NULL;
+      free(selected);
     
-
-  return dato;
+      return dato;
+    }
   
+    (selected->prev)->next = selected->next;
+  if (selected->next != NULL) {
+    (selected->next)->prev = selected->prev;
+  }
+  
+  free(selected);
+  
+  if (selected->prev == NULL) {
+    list->head = selected->next;
+  }
+  
+  if (selected->next == NULL) {
+    list->tail = selected->prev;
+  }
+  return dato;
 }
-
 void cleanList(List * list) {
     while (list->head != NULL) {
         popFront(list);
