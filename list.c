@@ -156,7 +156,7 @@ void * popCurrent(List * list) {
 
 
   (selected->prev)->next = selected->next;
-  (selected->prev)->prev = selected->prev;
+  (selected->next)->prev = selected->prev;
 
   free(selected);
 
